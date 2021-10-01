@@ -3,10 +3,20 @@ const express = require('express');
 const cors = require('cors');
 
 const individualRoutes = require('./routes/nodeJs');
+const cssRoutes = require('./routes/css')
 
 const app = express();
 app.use(cors());
 
 app.use('/api/node', individualRoutes);
+app.use('/api/css', cssRoutes);
+
+app.use((error, req, res, next)=>{
+	if (res.headerSent){
+		return next(error)
+	}
+	res.status(error.code || 500);
+	res.json({message: error.message || 'an unknown error'})
+})
 
 app.listen(5000);
