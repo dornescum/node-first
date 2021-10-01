@@ -39,9 +39,23 @@ const getNodeRoutesById =(req, res, next) => {
 const getAllNodeRoutes =(req, res, next) => {
 	res.status(200).json(test);
 };
+
+const createNewPosts = (req, res, next)=>{
+	const {desc, category, title, id} = req.body;
+	const createdPost = {
+		title,
+		category,
+		desc,
+		id
+	}
+	test.push(createdPost) // sau unshift dc vreaus a fie primul
+	res.status(201).json({message: createdPost})
+}
+
 // o varianta!!
 // module.exports = getNodeRoutesById;
 // module.exports = getAllNodeRoutes;
 
 exports.getNodeRoutesById = getNodeRoutesById;
 exports.getAllNodeRoutes = getAllNodeRoutes;
+exports.createNewPosts = createNewPosts;

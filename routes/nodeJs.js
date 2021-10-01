@@ -10,6 +10,8 @@ router.get('/', routesControllers.getAllNodeRoutes);
 
 router.get('/:pid', routesControllers.getNodeRoutesById);
 
+router.post('/post', routesControllers.createNewPosts);
+
 
 module.exports = router;
 
